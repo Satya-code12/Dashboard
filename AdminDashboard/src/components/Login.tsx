@@ -1,20 +1,29 @@
+import { useState } from "react"
+
 export const LoginPage = () =>{
 
- let username = "Satyabrata123"
- let password = "1234"
+ const [usrname, setUsrname] = useState<string | null>(null)
+ const [password, setPassword] = useState<string | null>(null)
+ console.log(usrname);
+ console.log(password);
+ 
+ // let username = "Satyabrata123"
+ // let password = "1234"
 
  return(
   <div className="h-screen flex justify-center items-center font-serif font-bold" style={{
    backgroundColor:"#36454F"
   }}>
-   <div className="border border-red-800 container h-[25rem] w-[30rem] flex flex-col justify-center items-center bg-yellow-400 shadow-lg shadow-yellow-800">
+   <div className="box-border container h-[25rem] w-[30rem] flex flex-col justify-center items-center bg-yellow-400 shadow-lg shadow-yellow-800">
     <h1 className="text-xl">Login</h1>
     <h3 className="mt-3">Welcome to the Admin panel!</h3>
-    <input type="text" placeholder="username" className="border-none rounded-md h-9 mt-5 w-[20rem] p-2"/><br />
-    <input type="password" placeholder="password" required className="border-none rounded-md h-9 w-[20rem] p-2"/><br />
+    <div className="">
+    <input type="text" placeholder="username" className="border-none rounded-md h-9 mt-5 w-[20rem] p-2" onChange={(e)=>setUsrname(e.target.value)}/><br/><p className="text-sm text-red-600">{usrname? "" : "*Credentials are Mandatory"}</p><br />
+    <input type="password" placeholder="password" required className="border-none rounded-md h-9 w-[20rem] p-2" onChange={(e)=>setPassword(e.target.value)}/><br/><p className="text-sm text-red-600">{password? "" : "Credentials are Mandatory"}</p><br />
+    </div>
     <button className=" w-[8rem] h-[2rem] cursor-pointer rounded-md text-white" style={{
    backgroundColor:"#36454F"
-  }}>Login</button>
+  }} onClick={handleLogin}>Login</button>
    </div>
   </div>
  )
