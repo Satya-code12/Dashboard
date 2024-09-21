@@ -1,14 +1,23 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 
 export const LoginPage = () =>{
 
  const [usrname, setUsrname] = useState<string | null>(null)
  const [password, setPassword] = useState<string | null>(null)
+ const navigate = useNavigate()
  console.log(usrname);
  console.log(password);
  
- // let username = "Satyabrata123"
- // let password = "1234"
+ const handleLogin =()=>{
+  if (usrname === "Satyabrata" && password === "Hello121") {
+   navigate("/dashboard")
+   // alert("Login Successfull")
+  }else {
+   alert("Error : Incorrect Credentials, Can't Navigate to Admin Panel")
+  }
+ }
 
  return(
   <div className="h-screen flex justify-center items-center font-serif font-bold" style={{
